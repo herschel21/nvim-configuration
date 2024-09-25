@@ -25,5 +25,8 @@ require("lazy").setup({
 	require("plugins.alpha"),
 	require("plugins.indent-blankline"),
 	require("plugins.comment"),
+	require("plugins.noice"),
+	require("plugins.lazy_dev"),
+	require("plugins.nvim-comp"),
 })
 -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
