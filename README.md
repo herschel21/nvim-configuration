@@ -22,6 +22,14 @@ bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/main/insta
 
 This command downloads and runs the installation script, which will set up the Neovim configuration for you.
 
+## Removal
+
+You can uninstall this Neovim configuration and revert back easily with this following command:
+
+```bash
+bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/main/uninstall.sh -O -)"
+```
+
 ## Usage
 
 After installation, simply run `nvim` to start Neovim with the new configuration. Here are some key features and how to use them:
