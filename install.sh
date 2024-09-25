@@ -25,7 +25,7 @@ echo "Unzipping the dotfile..."
 unzip "$ZIP_FILE" -d "$DOWNLOAD_DIR"
 
 echo "Copying..."
-cp -r "$DOWNLOAD_DIR"/*/* "$DEST_DIR"
+cp -r "$DOWNLOAD_DIR"/dotfiles-main/nvim/ "$DEST_DIR"
 
 echo "Cleaning up..."
 rm -rf "$DOWNLOAD_DIR" "$ZIP_FILE"
