@@ -3,8 +3,6 @@
 - Modern and intuitive user interface
 - Syntax highlighting and intelligent code completion
 - Integrated file explorer and fuzzy finder
-- Git integration for easy version control
-- Customizable themes to suit your style
 
 ## Prerequisites
 
