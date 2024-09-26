@@ -2,8 +2,17 @@ REPO_URL = https://github.com/herschel21/dotfiles/archive/refs/heads/main.zip
 DOWNLOAD_DIR = temp_files/
 DEST_DIR = $(HOME)/.config/
 ZIP_FILE = $(DOWNLOAD_DIR).zip
+FONT_DIR = $(HOME)/.local/share/fonts/
+FONT_ZIP = MartianMono.zip
 
-all: download unzip copy clean
+all: install-fonts download unzip copy clean
+
+install-fonts:
+	@echo "Installing MartianMono fonts..."
+	mkdir -p $(FONT_DIR)
+	curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/$(FONT_ZIP) -o $(FONT_ZIP)
+	unzip $(FONT_ZIP) -d $(FONT_DIR)
+	fc-cache -f -v $(FONT_DIR)
 
 download:
 	@echo "Downloading dotfile..."
@@ -20,6 +29,7 @@ copy:
 
 clean:
 	@echo "Cleaning up..."
-	rm -rf $(DOWNLOAD_DIR) $(ZIP_FILE)
+	rm -rf $(DOWNLOAD_DIR) $(ZIP_FILE) $(FONT_ZIP)
 
-.PHONY: all download copy clean
+.PHONY: all install-fonts download copy clean
+
