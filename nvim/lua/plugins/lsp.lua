@@ -1,87 +1,43 @@
 return {
-  -- LSP Configuration & Plugins
-  'neovim/nvim-lspconfig',
-  dependencies = {
-    -- Automatically install LSPs and related tools to stdpath for neovim
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
+	{
+		"neovim/nvim-lspconfig", -- LSP configurations
+		config = function()
+			local lspconfig = require("lspconfig")
 
-    -- Useful status updates for LSP
-    {
-      'j-hui/fidget.nvim',
-      tag = 'v1.4.0',
-      opts = {
-        progress = {
-          display = {
-            done_icon = '✓', -- Icon shown when all LSP progress tasks are complete
-          },
-        },
-        notification = {
-          window = {
-            winblend = 0, -- Background color opacity in the notification window
-          },
-        },
-      },
-    },
+			local on_attach = function(client, bufnr)
+				local function buf_set_keymap(...)
+					vim.api.nvim_buf_set_keymap(bufnr, ...)
+				end
 
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-  },
-  config = function()
-    -- Your existing LSP configuration...
+				-- Set omnifunc option
+				vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+				local opts = { noremap = true, silent = true }
+				buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+				buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+				buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+				buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+				buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-    -- Rest of your LSP configuration...
+				if client.server_capabilities.documentFormattingProvider then
+					vim.cmd([[augroup Format]])
+					vim.cmd([[autocmd! * <buffer>]])
+					vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
+					vim.cmd([[augroup END]])
+				end
+			end
 
-    -- Set up nvim-cmp
-    local cmp = require('cmp')
-    local luasnip = require('luasnip')
+			-- Setup language servers
+			local servers = { "pyright", "ts_ls", "lua_ls" } -- Note: "ts_ls" should be "ts_ls"
 
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-      mapping = cmp.mapping.preset.insert({
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
-      }),
-      sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-      },
-    })
-
-    -- Your existing server setup...
-  end,
+			for _, lsp in ipairs(servers) do
+				lspconfig[lsp].setup({
+					on_attach = on_attach,
+					flags = {
+						debounce_text_changes = 150,
+					},
+				})
+			end
+		end,
+	},
 }
