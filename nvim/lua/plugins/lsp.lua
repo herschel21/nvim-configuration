@@ -28,7 +28,7 @@ return {
 			end
 
 			-- Setup language servers
-			local servers = { "pyright", "ts_ls", "lua_ls" } -- Note: "ts_ls" should be "ts_ls"
+			local servers = { "pyright", "ts_ls", "lua_ls", "clangd" }
 
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({

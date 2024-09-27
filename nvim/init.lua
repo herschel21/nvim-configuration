@@ -1,4 +1,5 @@
 require("core.options")
+require("core.snippets")
 require("core.keymaps")
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -28,5 +29,45 @@ require("lazy").setup({
 	require("plugins.noice"),
 	require("plugins.lazy_dev"),
 	require("plugins.nvim-comp"),
+}, {
+	ui = {
+		-- If you have a Nerd Font, set icons to an empty table which will use the
+		-- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
+		icons = vim.g.have_nerd_font and {} or {
+			cmd = "⌘",
+			config = "🛠",
+			event = "📅",
+			ft = "📂",
+			init = "⚙",
+			keys = "🗝",
+			plugin = "🔌",
+			runtime = "💻",
+			require = "🌙",
+			source = "📄",
+			start = "🚀",
+			task = "📌",
+			lazy = "💤 ",
+		},
+	},
 })
 -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+
+-- Function to check if a file exists
+local function file_exists(file)
+	local f = io.open(file, "r")
+	if f then
+		f:close()
+		return true
+	else
+		return false
+	end
+end
+
+-- Path to the session file
+local session_file = ".session.vim"
+
+-- Check if the session file exists in the current directory
+if file_exists(session_file) then
+	-- Source the session file
+	vim.cmd("source " .. session_file)
+end
