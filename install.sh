@@ -20,6 +20,7 @@ echo "Installing MartianMono fonts..."
 curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/$FONT_ZIP" -o "$FONT_ZIP"
 unzip "$FONT_ZIP" -d "$FONT_DIR"
 fc-cache -f -v "$FONT_DIR"
+
 sudo apt-get install ripgrep -y
 sudo apt-get install xsel -y
 
