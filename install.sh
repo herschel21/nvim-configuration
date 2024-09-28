@@ -21,6 +21,7 @@ curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/$FONT_
 unzip "$FONT_ZIP" -d "$FONT_DIR"
 fc-cache -f -v "$FONT_DIR"
 sudo apt-get install ripgrep -y
+sudo apt-get install xsel -y
 
 # Backup existing Neovim configuration if it exists
 if [ -d "$DEST_DIR/nvim" ]; then
