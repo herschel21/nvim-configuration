@@ -1,16 +1,20 @@
-## Features
+# 🚀 Herschel21's Neovim Configuration
 
-- Modern and intuitive user interface
-- Syntax highlighting and intelligent code completion
-- Integrated file explorer and fuzzy finder
+A modern, feature-rich Neovim configuration designed for productivity and ease of use. (I need only these things, feel free to edit as per your choice)
 
-## Prerequisites
+## ✨ Features
+
+- 🎨 Modern and intuitive user interface
+- 🖥️ Syntax highlighting and intelligent code completion
+- 🗂️ Integrated file explorer and fuzzy finder
+
+## 📋 Prerequisites
 
 - Neovim (version 0.5 or later)
 - Git
 - Wget or curl
 
-## Installation
+## 🛠️ Installation
 
 You can install this Neovim configuration easily with the following command:
 
@@ -20,87 +24,177 @@ bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/main/insta
 
 This command downloads and runs the installation script, which will set up the Neovim configuration for you.
 
-## Removal
+## 🗑️ Removal
 
-You can uninstall this Neovim configuration and revert back easily with this following command:
+To uninstall this Neovim configuration and revert back to your previous setup, use:
 
 ```bash
 bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/main/uninstall.sh -O -)"
 ```
 
-## Usage
+## 🚀 Usage
 
-After installation, simply run `nvim` to start Neovim with the new configuration. Here are some key features and how to use them:
+After installation, simply run `nvim` to start Neovim with the new configuration.
 
-## Neovim Keymaps
+## ⌨️ Keymaps
+
+# Neovim Keymaps
 
 ## General
 
-- Leader key: `<Space>`
-- Exit insert mode: `jk` or `kj`
-- Save file: `<Ctrl-s>`
-- Save file without auto-formatting: `<Space>sn`
-- Quit file: `<Ctrl-q>`
-- Clear search highlights: `<Esc>`
-- Toggle Transparency: `<Space>z`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<Space>` | Normal | Leader key |
+| `jk` or `kj` | Insert | Exit insert mode |
+| `<Ctrl-s>` | Normal | Save file |
+| `<Space>sn` | Normal | Save file without auto-formatting |
+| `<Ctrl-q>` | Normal | Quit file |
+| `<Esc>` | Normal | Clear search highlights |
+| `<Space>z` | Normal | Toggle Transparency |
 
 ## Navigation
 
-- Move through wrapped lines: `j` and `k` (in normal mode)
-- Scroll down and center: `<Ctrl-d>`
-- Scroll up and center: `<Ctrl-u>`
-- Find next and center: `n`
-- Find previous and center: `N`
-- Next buffer: `<Tab>`
-- Previous buffer: `<Shift-Tab>`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `j` and `k` | Normal | Move through wrapped lines |
+| `<Ctrl-d>` | Normal | Scroll down and center |
+| `<Ctrl-u>` | Normal | Scroll up and center |
+| `n` | Normal | Find next and center |
+| `N` | Normal | Find previous and center |
+| `<Tab>` | Normal | Next buffer |
+| `<Shift-Tab>` | Normal | Previous buffer |
 
 ## Window Management
 
-- Split window vertically: `<Space>v`
-- Split window horizontally: `<Space>h`
-- Make split windows equal size: `<Space>se`
-- Close current split window: `<Space>xs`
-- Navigate between splits: 
-  - Up: `<Ctrl-k>`
-  - Down: `<Ctrl-j>`
-  - Left: `<Ctrl-h>`
-  - Right: `<Ctrl-l>`
-- Resize windows:
-  - Decrease height: `<Ctrl-Up>`
-  - Increase height: `<Ctrl-Down>`
-  - Decrease width: `<Ctrl-Right>`
-  - Increase width: `<Ctrl-Left>`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<Space>v` | Normal | Split window vertically |
+| `<Space>h` | Normal | Split window horizontally |
+| `<Space>se` | Normal | Make split windows equal size |
+| `<Space>xs` | Normal | Close current split window |
+| `<Ctrl-k>` | Normal | Navigate to split above |
+| `<Ctrl-j>` | Normal | Navigate to split below |
+| `<Ctrl-h>` | Normal | Navigate to left split |
+| `<Ctrl-l>` | Normal | Navigate to right split |
+| `<Ctrl-Up>` | Normal | Decrease window height |
+| `<Ctrl-Down>` | Normal | Increase window height |
+| `<Ctrl-Left>` | Normal | Decrease window width |
+| `<Ctrl-Right>` | Normal | Increase window width |
 
 ## Tab Management
 
-- Open new tab: `<Space>to`
-- Close current tab: `<Space>tx`
-- Go to next tab: `<Space>tn`
-- Go to previous tab: `<Space>tp`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<Space>to` | Normal | Open new tab |
+| `<Space>tx` | Normal | Close current tab |
+| `<Space>tn` | Normal | Go to next tab |
+| `<Space>tp` | Normal | Go to previous tab |
 
 ## Buffer Management
 
-- Close buffer: `<Space>x`
-- New buffer: `<Space>b`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<Space>x` | Normal | Close buffer |
+| `<Space>b` | Normal | New buffer |
 
 ## Text Manipulation
 
-- Delete single character without copying: `x`
-- Increment number: `<Space>+`
-- Decrement number: `<Space>-`
-- Stay in indent mode (Visual mode): `<` and `>`
-- Move text up (Visual mode): `<Alt-k>`
-- Move text down (Visual mode): `<Alt-j>`
-- Keep last yanked when pasting (Visual mode): `p`
-- Replace word under cursor: `<Space>j`
-- Yank to system clipboard: 
-- Normal and Visual mode: `<Space>y`
-- Entire line (Normal mode): `<Space>Y`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `x` | Normal | Delete single character without copying |
+| `<Space>+` | Normal | Increment number |
+| `<Space>-` | Normal | Decrement number |
+| `<` and `>` | Visual | Stay in indent mode |
+| `<Alt-k>` | Visual | Move text up |
+| `<Alt-j>` | Visual | Move text down |
+| `p` | Visual | Keep last yanked when pasting |
+| `<Space>j` | Normal | Replace word under cursor |
+| `<Space>y` | Normal, Visual | Yank to system clipboard |
+| `<Space>Y` | Normal | Yank entire line to system clipboard |
 
 ## Misc
 
-- Toggle line wrapping: `<Space>lw`
-- Toggle diagnostics: `<Space>do`
-- Save session: `<Space>ss`
-- Load session: `<Space>sl`
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<Space>lw` | Normal | Toggle line wrapping |
+| `<Space>do` | Normal | Toggle diagnostics |
+| `<Space>ss` | Normal | Save session |
+| `<Space>sl` | Normal | Load session |
 
+## Autocompletion (nvim-cmp)
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<C-j>` | Insert | Select next item |
+| `<C-k>` | Insert | Select previous item |
+| `<CR>` | Insert | Confirm completion |
+| `<C-c>` | Insert | Trigger completion manually |
+| `<C-l>` | Insert, Select | Expand or jump forward in snippet |
+| `<C-h>` | Insert, Select | Jump backward in snippet |
+| `<Tab>` | Insert, Select | Select next item or expand/jump in snippet |
+| `<S-Tab>` | Insert, Select | Select previous item or jump backward in snippet |
+
+## File Explorer (Neo-tree)
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `\` | Normal | Reveal current file in Neo-tree |
+| `<leader>e` | Normal | Toggle Neo-tree |
+
+## Commenting (Comment.nvim)
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<C-_>` | Normal | Toggle comment for current line |
+| `<C-c>` | Normal | Toggle comment for current line |
+| `<C-/>` | Normal | Toggle comment for current line |
+| `<C-_>` | Visual | Toggle comment for selected lines |
+| `<C-c>` | Visual | Toggle comment for selected lines |
+| `<C-/>` | Visual | Toggle comment for selected lines |
+
+## LSP
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `gd` | Normal | Go to definition |
+| `gD` | Normal | Go to declaration |
+| `gr` | Normal | Show references |
+| `gi` | Normal | Go to implementation |
+| `<space>rn` | Normal | Rename symbol |
+| `<space>ca` | Normal | Code action |
+| `<space>d` | Normal | Show diagnostics |
+
+## Fuzzy Finder (Telescope)
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<leader>?` | Normal | Find recently opened files |
+| `<leader>sb` | Normal | Search existing buffers |
+| `<leader>sm` | Normal | Search marks |
+| `<leader>gf` | Normal | Search Git files |
+| `<leader>gc` | Normal | Search Git commits |
+| `<leader>gcf` | Normal | Search Git commits for current file |
+| `<leader>gb` | Normal | Search Git branches |
+| `<leader>gs` | Normal | Search Git status (diff view) |
+| `<leader>sf` | Normal | Search files |
+| `<leader>sh` | Normal | Search help tags |
+| `<leader>sw` | Normal | Search current word |
+| `<leader>sg` | Normal | Search by grep |
+| `<leader>sd` | Normal | Search diagnostics |
+| `<leader>sr` | Normal | Resume last search |
+| `<leader>s.` | Normal | Search recent files |
+| `<leader><leader>` | Normal | Find existing buffers |
+| `<leader>s/` | Normal | Live grep in open files |
+| `<leader>/` | Normal | Fuzzy search in current buffer |
+
+## Bufferline
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `<Tab>` | Normal | Go to next buffer |
+| `<S-Tab>` | Normal | Go to previous buffer |
+| `<leader>1` to `<leader>9` | Normal | Go to buffer 1-9 |
+
+---
+
+By [herschel21](https://github.com/herschel21)
