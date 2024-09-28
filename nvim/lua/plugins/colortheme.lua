@@ -1,5 +1,6 @@
 return {
 	"shaunsingh/nord.nvim",
+	--"williamboman/mason.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()

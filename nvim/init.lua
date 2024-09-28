@@ -52,6 +52,8 @@ require("lazy").setup({
 })
 -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 
+require("mason").setup()
+
 -- Function to check if a file exists
 local function file_exists(file)
 	local f = io.open(file, "r")
