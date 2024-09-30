@@ -2,6 +2,10 @@
 
 return {
 	"neovim/nvim-lspconfig",
+	dependencies = {
+		{ "williamboman/mason.nvim", config = true },
+		"williamboman/mason-lspconfig.nvim",
+	},
 	config = function()
 		local lspconfig = require("lspconfig")
 		local on_attach = function(client, bufnr)
