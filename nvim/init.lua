@@ -53,6 +53,9 @@ require("lazy").setup({
 -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 
 require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "clangd" },
+})
 
 -- Function to check if a file exists
 local function file_exists(file)
