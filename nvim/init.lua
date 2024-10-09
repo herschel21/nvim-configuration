@@ -30,6 +30,7 @@ require("lazy").setup({
 	require("plugins.lazy_dev"),
 	require("plugins.nvim-comp"),
 	require("plugins.vim-tmux-navigator"),
+	require("plugins.terminal"),
 	require("plugins.aerial"),
 }, {
 	ui = {
