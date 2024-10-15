@@ -1,18 +1,4 @@
-# 🚀 Herschel21's Neovim Configuration
-
-A modern, feature-rich Neovim configuration designed for productivity and ease of use. (I need only these things, feel free to edit as per your choice)
-
-## ✨ Features
-
-- 🎨 Modern and intuitive user interface
-- 🖥️ Syntax highlighting and intelligent code completion
-- 🗂️ Integrated file explorer and fuzzy finder
-
-## 📋 Prerequisites
-
-- Neovim (version 0.5 or later)
-- Git
-- Wget or curl
+# 🚀 My Neovim Configuration
 
 ## 🛠️ Installation
 
