@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_URL="https://github.com/herschel21/dotfiles/archive/refs/heads/main.zip"
+REPO_URL="https://github.com/herschel21/nvim-configration/archive/refs/heads/main.zip"
 DOWNLOAD_DIR="temp_files/"
 DEST_DIR="$HOME/.config/"
 ZIP_FILE="$DOWNLOAD_DIR/main.zip"
@@ -42,7 +42,7 @@ echo "Unzipping the dotfile..."
 unzip "$ZIP_FILE" -d "$DOWNLOAD_DIR"
 
 echo "Copying..."
-cp -r "$DOWNLOAD_DIR/dotfiles-main/nvim/" "$DEST_DIR"
+cp -r "$DOWNLOAD_DIR/nvim-configration/nvim/" "$DEST_DIR"
 
 echo "Cleaning up..."
 rm -rf "$DOWNLOAD_DIR" "$ZIP_FILE" "$FONT_ZIP"
