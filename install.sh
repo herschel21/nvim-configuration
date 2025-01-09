@@ -1,50 +1,62 @@
 #!/bin/bash
 
-REPO_URL="https://github.com/herschel21/nvim-configration/archive/refs/heads/main.zip"
-DOWNLOAD_DIR="temp_files/"
+# Constants
+REPO_URL="https://github.com/herschel21/nvim-configuration/archive/refs/heads/main.zip"
+TEMP_DIR="temp_files/"
 DEST_DIR="$HOME/.config/"
-ZIP_FILE="$DOWNLOAD_DIR/main.zip"
+ZIP_FILE="$TEMP_DIR/main.zip"
 BACKUP_DIR="$HOME/nvim_backup"
 FONT_DIR="$HOME/.local/share/fonts/"
 FONT_ZIP="MartianMono.zip"
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/$FONT_ZIP"
 
-# Ensure the backup directory exists
-mkdir -p "$BACKUP_DIR"
+# Ensure necessary directories exist
+mkdir -p "$TEMP_DIR" "$FONT_DIR" "$BACKUP_DIR"
 
-# Ensure the installation and font directories exist
-mkdir -p "$DOWNLOAD_DIR"
-mkdir -p "$FONT_DIR"
+# Function to handle errors
+error_exit() {
+    echo "Error: $1"
+    exit 1
+}
 
 # Install MartianMono fonts
 echo "Installing MartianMono fonts..."
-curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/$FONT_ZIP" -o "$FONT_ZIP"
-unzip "$FONT_ZIP" -d "$FONT_DIR"
-fc-cache -f -v "$FONT_DIR"
+curl -L "$FONT_URL" -o "$TEMP_DIR/$FONT_ZIP" || error_exit "Failed to download font."
+unzip "$TEMP_DIR/$FONT_ZIP" -d "$FONT_DIR" || error_exit "Failed to unzip font."
+fc-cache -f -v "$FONT_DIR" || error_exit "Failed to refresh font cache."
 
-# For Ubuntu/Debian
-sudo apt-get install ripgrep -y
-sudo apt-get install xsel -y
-
-# For ARCH
-sudo pacman -S ripgrep
-sudo pacman -S xsel
-
-# Backup existing Neovim configuration if it exists
-if [ -d "$DEST_DIR/nvim" ]; then
-    echo "Backing up existing Neovim configuration..."
-    mv "$DEST_DIR/nvim" "$BACKUP_DIR"
+# Install dependencies based on the OS
+if [ -f "/etc/debian_version" ]; then
+    echo "Installing dependencies for Ubuntu/Debian..."
+    sudo apt-get update
+    sudo apt-get install -y ripgrep xsel || error_exit "Failed to install dependencies."
+elif [ -f "/etc/arch-release" ]; then
+    echo "Installing dependencies for Arch Linux..."
+    sudo pacman -Sy --noconfirm ripgrep xsel || error_exit "Failed to install dependencies."
+else
+    echo "Unsupported OS. Please install 'ripgrep' and 'xsel' manually."
 fi
 
-echo "Downloading dotfile..."
-curl -L "$REPO_URL" -o "$ZIP_FILE"
+# Backup existing Neovim configuration
+if [ -d "$DEST_DIR/nvim" ]; then
+    echo "Backing up existing Neovim configuration..."
+    mv "$DEST_DIR/nvim" "$BACKUP_DIR" || error_exit "Failed to back up Neovim configuration."
+fi
 
-echo "Unzipping the dotfile..."
-unzip "$ZIP_FILE" -d "$DOWNLOAD_DIR"
+# Download and extract dotfiles
+echo "Downloading Neovim configuration..."
+curl -L "$REPO_URL" -o "$ZIP_FILE" || error_exit "Failed to download configuration."
 
-echo "Copying..."
-cp -r "$DOWNLOAD_DIR/nvim-configration/nvim/" "$DEST_DIR"
+echo "Unzipping configuration..."
+unzip "$ZIP_FILE" -d "$TEMP_DIR" || error_exit "Failed to unzip configuration."
 
+# Copy configuration to the destination
+echo "Installing Neovim configuration..."
+cp -r "$TEMP_DIR/nvim-configuration-main/nvim/" "$DEST_DIR" || error_exit "Failed to copy configuration."
+
+# Clean up temporary files
 echo "Cleaning up..."
-rm -rf "$DOWNLOAD_DIR" "$ZIP_FILE" "$FONT_ZIP"
+rm -rf "$TEMP_DIR" "$ZIP_FILE"
 
-echo "Installation Done!"
+echo "Installation completed successfully!"
+
