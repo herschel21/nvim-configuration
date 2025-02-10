@@ -31,7 +31,8 @@ require("lazy").setup({
     require("plugins.aerial"),
     require("plugins.terminal"),
     require("plugins.vimtex"),
-    require("plugins.cody")
+    require("plugins.cody"),
+    require("plugins.neogit"),
 }, {
     ui = {
         -- If you have a Nerd Font, set icons to an empty table which will use the
