@@ -64,10 +64,10 @@ install_dependencies() {
     if [ -f "/etc/debian_version" ]; then
         log "Detected Debian/Ubuntu system"
         sudo apt-get update || error_exit "Failed to update package list"
-        sudo apt-get install -y ripgrep xsel neovim curl unzip || error_exit "Failed to install dependencies"
+        sudo apt-get install -y ripgrep xsel curl unzip fzf || error_exit "Failed to install dependencies"
     elif [ -f "/etc/arch-release" ]; then
         log "Detected Arch Linux system"
-        sudo pacman -Sy --noconfirm ripgrep xsel neovim curl unzip || error_exit "Failed to install dependencies"
+        sudo pacman -Sy --noconfirm ripgrep xsel curl unzip || error_exit "Failed to install dependencies"
     elif [ -f "/etc/fedora-release" ]; then
         log "Detected Fedora system"
         sudo dnf install -y ripgrep xsel neovim curl unzip || error_exit "Failed to install dependencies"
