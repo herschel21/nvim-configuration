@@ -5,14 +5,10 @@ return {
     dependencies = { 'ibhagwan/fzf-lua' }, -- Added fzf-lua as a dependency
     keys = {
       { '<leader>ov', '<cmd>lua require("obsidian").vault_prompt()<cr>', desc = 'Vault prompt' },
-      { '<leader>oc', '<cmd>lua require("obsidian").cd_vault()<cr>', desc = 'Cd vault' },
       { '<leader>on', '<cmd>lua require("obsidian").new_note_prompt()<cr>', desc = 'New note' },
       { '<leader>ot', '<cmd>lua require("obsidian").open_today()<cr>', desc = 'Open today' },
       { '<leader>oT', '<cmd>lua require("obsidian").open_today_prompt()<cr>', desc = 'Open today (shift)' },
-      { '<leader>oi', '<cmd>lua require("obsidian").template_picker()<cr>', desc = 'Template picker' },
       { '<leader>of', '<cmd>lua require("obsidian").note_picker()<cr>', desc = 'Note picker' },
-      { '<leader>ob', '<cmd>lua require("obsidian").backlinks_picker()<cr>', desc = 'Backlinks picker' },
-      { '<leader>or', '<cmd>lua require("obsidian").rename_prompt()<cr>', desc = 'Rename prompt' },
       {
         'gf',
         function()
