@@ -31,6 +31,7 @@ require("lazy").setup({
     require("plugins.aerial"),
     require("plugins.terminal"),
     require("plugins.vimtex"),
+    require("plugins.codium"),
     require("plugins.cody"),
     require("plugins.neogit"),
     require("plugins.url-open"),
