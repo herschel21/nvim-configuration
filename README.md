@@ -5,7 +5,7 @@
 You can install this Neovim configuration easily with the following command:
 
 ```bash
-bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/main/install.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/release-1.0/install.sh -O -)"
 ```
 
 This command downloads and runs the installation script, which will set up the Neovim configuration for you.
@@ -15,7 +15,7 @@ This command downloads and runs the installation script, which will set up the N
 To uninstall this Neovim configuration and revert back to your previous setup, use:
 
 ```bash
-bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/main/uninstall.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/herschel21/dotfiles/release-1.0/uninstall.sh -O -)"
 ```
 
 ## 🚀 Usage
