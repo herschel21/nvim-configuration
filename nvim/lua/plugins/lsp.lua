@@ -67,7 +67,12 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      clangd = {},
+      clangd = {
+        cmd = {
+          'clangd',
+          '--offset-encoding=utf-16',
+        },
+      },
       -- gopls = {},
       pyright = {},
       -- rust_analyzer = {},
