@@ -26,6 +26,7 @@ local plugins = {
     { import = "plugins.lualine" },      -- Status line
     { import = "plugins.alpha" },        -- Dashboard
     { import = "plugins.indent-blankline" },
+    { import = "plugins.autosession" },
     
     -- Editor Features
     { import = "plugins.neotree" },      -- File explorer
