@@ -26,7 +26,6 @@ local plugins = {
     { import = "plugins.lualine" },      -- Status line
     { import = "plugins.alpha" },        -- Dashboard
     { import = "plugins.indent-blankline" },
-    { import = "plugins.autosession" },
     
     -- Editor Features
     { import = "plugins.neotree" },      -- File explorer
@@ -112,9 +111,15 @@ require("mason").setup({
     }
 })
 
--- [[ Session Management ]]
+-- Set session directory (can be customized)
+local session_dir = vim.fn.stdpath("data") .. "/sessions"
+
+-- Ensure session directory exists
+vim.fn.mkdir(session_dir, "p")
+
+-- Load session if it exists (with a specific filename)
 local function load_session()
-    local session_file = vim.fn.getcwd() .. "/.session.vim"
+    local session_file = session_dir .. "/.session.vim"
     if vim.fn.filereadable(session_file) == 1 then
         vim.cmd("source " .. session_file)
     end
@@ -123,7 +128,7 @@ end
 -- Auto-save session on exit
 vim.api.nvim_create_autocmd("VimLeavePre", {
     callback = function()
-        local session_file = vim.fn.getcwd() .. "/.session.vim"
+        local session_file = session_dir .. "/.session.vim"
         vim.cmd("mksession! " .. session_file)
     end,
 })
@@ -137,3 +142,4 @@ vim.api.nvim_create_autocmd("VimEnter", {
         end
     end,
 })
+
