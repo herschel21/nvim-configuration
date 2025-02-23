@@ -38,7 +38,7 @@ local plugins = {
     { import = "plugins.lsp" },          -- Language Server Protocol
     { import = "plugins.autocompletion" },
     { import = "plugins.codium" },       -- AI completion
-    { import = "plugins.cody" },         -- Sourcegraph
+    -- { import = "plugins.cody" },         -- Sourcegraph
     { import = "plugins.neogit" },       -- Git interface
     
     -- Language Specific
@@ -50,6 +50,7 @@ local plugins = {
     { import = "plugins.url-open" },
     { import = "plugins.obsidian" },
     { import = "plugins.lazy_dev" },
+    { import = "plugins.git-conflict" },
 }
 
 -- [[ Lazy.nvim Configuration ]]
