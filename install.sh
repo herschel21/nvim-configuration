@@ -5,7 +5,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # Constants
-readonly REPO_URL="https://github.com/herschel21/nvim-configuration/archive/refs/heads/main.zip"
+readonly REPO_URL="https://github.com/herschel21/nvim-configuration/archive/refs/heads/release-1.1.zip"
 readonly TEMP_DIR="/tmp/nvim_install_$(date +%s)"
 readonly DEST_DIR="$HOME/.config"
 readonly ZIP_FILE="$TEMP_DIR/main.zip"
