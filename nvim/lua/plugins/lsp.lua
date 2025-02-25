@@ -15,6 +15,14 @@ return {
     'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
+    -- Disable diagnostics (inline errors and warnings)
+    vim.diagnostic.config({
+      virtual_text = false, -- Disable inline diagnostic messages
+      signs = false,        -- Disable gutter signs
+      underline = false,    -- Disable error underlining
+      update_in_insert = false,
+    })
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -32,6 +40,11 @@ return {
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        
+        -- Add a keybinding to show diagnostics in float window if needed
+        map('<leader>e', vim.diagnostic.open_float, 'Show [E]rror Diagnostics')
+        map('<leader>q', vim.diagnostic.setloclist, 'Show Diagnostic [Q]uicklist')
+        
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
@@ -67,7 +80,12 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      clangd = {},
+      clangd = {
+        cmd = {
+          'clangd',
+          '--offset-encoding=utf-16',
+        },
+      },
       -- gopls = {},
       pyright = {},
       -- rust_analyzer = {},
