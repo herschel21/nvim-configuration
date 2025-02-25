@@ -8,7 +8,7 @@ IFS=$'\n\t'
 readonly REPO_URL="https://github.com/herschel21/nvim-configuration/archive/refs/heads/release-1.0.zip"
 readonly TEMP_DIR="/tmp/nvim_install_$(date +%s)"
 readonly DEST_DIR="$HOME/.config"
-readonly ZIP_FILE="$TEMP_DIR/main.zip"
+readonly ZIP_FILE="$TEMP_DIR/release-1.0.zip"
 readonly BACKUP_DIR="$HOME/nvim_backup/backup_$(date +%Y%m%d_%H%M%S)"
 readonly FONT_DIR="$HOME/.local/share/fonts"
 readonly FONT_ZIP="MartianMono.zip"
@@ -109,7 +109,7 @@ install_config() {
     
     log "Installing configuration..."
     mkdir -p "$DEST_DIR" || error_exit "Failed to create config directory"
-    cp -r "$TEMP_DIR/nvim-configuration-main/nvim/" "$DEST_DIR/" || error_exit "Failed to copy configuration"
+    cp -r "$TEMP_DIR/nvim-configuration-release-1.0/nvim/" "$DEST_DIR/" || error_exit "Failed to copy configuration"
 }
 
 # Main installation process
