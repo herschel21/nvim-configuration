@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugin Groups ]]
 local plugins = {
     -- UI and Theming
+    { import = "plugins.whichkey" },
     { import = "plugins.catpuccin" },    -- Theme
     { import = "plugins.bufferline" },   -- Buffer management
     { import = "plugins.lualine" },      -- Status line

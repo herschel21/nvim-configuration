@@ -41,9 +41,6 @@ return {
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         
-        -- Add a keybinding to show diagnostics in float window if needed
-        map('<leader>e', vim.diagnostic.open_float, 'Show [E]rror Diagnostics')
-        map('<leader>q', vim.diagnostic.setloclist, 'Show Diagnostic [Q]uicklist')
         
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
