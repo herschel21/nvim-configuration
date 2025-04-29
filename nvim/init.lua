@@ -22,9 +22,8 @@ local plugins = {
     -- UI and Theming
     { import = "plugins.whichkey" },
     { import = "plugins.catpuccin" },    -- Theme
-    { import = "plugins.bufferline" },   -- Buffer management
+    -- { import = "plugins.bufferline" },   -- Buffer management
     { import = "plugins.lualine" },      -- Status line
-    { import = "plugins.alpha" },        -- Dashboard
     { import = "plugins.indent-blankline" },
     
     -- Editor Features
@@ -40,9 +39,14 @@ local plugins = {
     
     -- Language Specific
     { import = "plugins.markdown" },
+    { import = "plugins.vimtex" },
     
     -- Utilities
     { import = "plugins.obsidian" },
+
+    -- AI Agents
+    -- { import = "plugins.codeium" },
+    { import = "plugins.additional_plugins" }
 }
 
 -- [[ Lazy.nvim Configuration ]]
