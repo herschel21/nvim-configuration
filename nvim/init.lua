@@ -1,5 +1,6 @@
 -- [[ Core Configuration ]]
 require("core.options")
+require("core.snippets")
 require("core.keymaps")
 
 -- [[ Bootstrap lazy.nvim ]]
@@ -20,33 +21,27 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugin Groups ]]
 local plugins = {
     -- UI and Theming
-    { import = "plugins.whichkey" },
-    { import = "plugins.catpuccin" },    -- Theme
-    -- { import = "plugins.bufferline" },   -- Buffer management
-    { import = "plugins.lualine" },      -- Status line
+    { import = "plugins.catpuccin" }, -- Theme
+    -- { import = "plugins.bufferline" }, -- Buffer management
+    { import = "plugins.lualine" }, -- Status line
     { import = "plugins.indent-blankline" },
-    
-    -- Editor Features
-    { import = "plugins.neotree" },      -- File explorer
-    { import = "plugins.telescope" },     -- Fuzzy finder
-    { import = "plugins.autopairs" },    -- Auto brackets
-    { import = "plugins.comment" },      -- Comments
-    
-    -- Development Tools
-    { import = "plugins.lsp" },          -- Language Server Protocol
-    { import = "plugins.autocompletion" },
-    { import = "plugins.neogit" },       -- Git interface
-    
-    -- Language Specific
-    { import = "plugins.markdown" },
-    { import = "plugins.vimtex" },
-    
-    -- Utilities
-    { import = "plugins.obsidian" },
 
-    -- AI Agents
-    -- { import = "plugins.codeium" },
-    { import = "plugins.additional_plugins" }
+    -- Editor Features
+    { import = "plugins.neotree" }, -- File explorer
+    { import = "plugins.telescope" }, -- Fuzzy finder
+    { import = "plugins.aerial" }, -- Code outline
+    { import = "plugins.autopairs" }, -- Auto brackets
+    { import = "plugins.comment" }, -- Comments
+    { import = "plugins.fugitive" },
+    { import = "plugins.whichkey" },
+
+    -- Development Tools
+    { import = "plugins.lsp" }, -- Language Server Protocol
+    { import = "plugins.autocompletion" },
+    { import = "plugins.codium" }, -- AI completion
+
+    -- Utilities
+    { import = "plugins.lazy_dev" },
 }
 
 -- [[ Lazy.nvim Configuration ]]
@@ -73,7 +68,7 @@ require("lazy").setup(plugins, {
     },
     change_detection = {
         enabled = true,
-        notify = false,  -- Disable notifications on config change
+        notify = false, -- Disable notifications on config change
     },
     performance = {
         cache = {
@@ -108,35 +103,36 @@ require("mason").setup({
     }
 })
 
--- Set session directory (can be customized)
-local session_dir = vim.fn.stdpath("data") .. "/sessions"
-
--- Ensure session directory exists
-vim.fn.mkdir(session_dir, "p")
-
--- Load session if it exists (with a specific filename)
-local function load_session()
-    local session_file = session_dir .. "/.session.vim"
-    if vim.fn.filereadable(session_file) == 1 then
-        vim.cmd("source " .. session_file)
-    end
-end
-
--- Auto-save session on exit
-vim.api.nvim_create_autocmd("VimLeavePre", {
-    callback = function()
-        local session_file = session_dir .. "/.session.vim"
-        vim.cmd("mksession! " .. session_file)
-    end,
-})
-
--- Load session on startup if it exists
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        -- Only load session if nvim was started without arguments
-        if vim.fn.argc() == 0 then
-            load_session()
-        end
-    end,
-})
+-- [[ Session Management - Commented Out Template ]]
+-- -- Set session directory (can be customized)
+-- local session_dir = vim.fn.stdpath("data") .. "/sessions"
+-- 
+-- -- Ensure session directory exists
+-- vim.fn.mkdir(session_dir, "p")
+-- 
+-- -- Load session if it exists (with a specific filename)
+-- local function load_session()
+--     local session_file = session_dir .. "/.session.vim"
+--     if vim.fn.filereadable(session_file) == 1 then
+--         vim.cmd("source " .. session_file)
+--     end
+-- end
+-- 
+-- -- Auto-save session on exit
+-- vim.api.nvim_create_autocmd("VimLeavePre", {
+--     callback = function()
+--         local session_file = session_dir .. "/.session.vim"
+--         vim.cmd("mksession! " .. session_file)
+--     end,
+-- })
+-- 
+-- -- Load session on startup if it exists
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         -- Only load session if nvim was started without arguments
+--         if vim.fn.argc() == 0 then
+--             load_session()
+--         end
+--     end,
+-- })
 
