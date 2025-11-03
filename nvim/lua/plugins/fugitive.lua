@@ -13,7 +13,8 @@ return {
         "GRemove",
         "GRename",
         "Glgrep",
-        "Gedit"
+        "Gedit",
+        "Gvdiffsplit"
     },
     ft = { "fugitive" },
     keys = {
@@ -22,12 +23,13 @@ return {
         { "<leader>ga", "<cmd>Git add .<cr>", desc = "Git add all" },
         { "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
         { "<leader>gca", "<cmd>Git commit --amend<cr>", desc = "Git commit amend" },
-        { "<leader>gp", "<cmd>Git push<cr>", desc = "Git push" },
-        { "<leader>gpf", "<cmd>Git push --force-with-lease<cr>", desc = "Git push force (safe)" },
+        { "<leader>gp", "<cmd>Git push --force <cr>", desc = "Git push" },
         { "<leader>gl", "<cmd>Git pull<cr>", desc = "Git pull" },
+        { "<leader>gdd", "<cmd>Git push -f --push-option=target=qnx-dut <cr>", desc = "Git push to dut-1" },
+        { "<leader>grf", "<cmd>Git reflog<cr>", desc = "Git reflog" },
         
         -- Git diff and blame
-        { "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff split" },
+        -- { "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff split" },
         { "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
         
         -- Git log

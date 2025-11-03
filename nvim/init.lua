@@ -25,6 +25,9 @@ local plugins = {
     -- { import = "plugins.bufferline" }, -- Buffer management
     { import = "plugins.lualine" }, -- Status line
     { import = "plugins.indent-blankline" },
+    { import = "plugins.alpha" },
+    { import = "plugins.autosession" },
+    { import = "plugins.neorg"},
 
     -- Editor Features
     { import = "plugins.neotree" }, -- File explorer
@@ -33,7 +36,6 @@ local plugins = {
     { import = "plugins.autopairs" }, -- Auto brackets
     { import = "plugins.comment" }, -- Comments
     { import = "plugins.fugitive" },
-    { import = "plugins.whichkey" },
 
     -- Development Tools
     { import = "plugins.lsp" }, -- Language Server Protocol

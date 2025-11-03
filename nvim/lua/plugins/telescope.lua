@@ -21,7 +21,30 @@ return {
         { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "[S]earch [F]iles" },
         { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "[S]earch [H]elp" },
         { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "[S]earch current [W]ord" },
-        { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "[S]earch by [G]rep" },
+        {
+            "<leader>sg",
+            function()
+                require("telescope.builtin").live_grep({
+                    attach_mappings = function(prompt_bufnr, map)
+                        local actions = require("telescope.actions")
+                        map('i', '<CR>', function()
+                            actions.select_default(prompt_bufnr)
+                            vim.defer_fn(function()
+                                vim.cmd('normal! zz')
+                            end, 10)
+                        end)
+                        map('n', '<CR>', function()
+                            actions.select_default(prompt_bufnr)
+                            vim.defer_fn(function()
+                                vim.cmd('normal! zz')
+                            end, 10)
+                        end)
+                        return true
+                    end,
+                })
+            end,
+            desc = "[S]earch by [G]rep"
+        },
         { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "[S]earch [D]iagnostics" },
         { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "[S]earch [R]resume" },
         { "<leader>s.", "<cmd>Telescope oldfiles<cr>", desc = "[S]earch Recent Files" },
@@ -32,6 +55,16 @@ return {
                 require("telescope.builtin").live_grep({
                     grep_open_files = true,
                     prompt_title = "Live Grep in Open Files",
+                    attach_mappings = function(prompt_bufnr, map)
+                        local actions = require("telescope.actions")
+                        map('i', '<CR>', function()
+                            actions.select_default(prompt_bufnr)
+                            vim.defer_fn(function()
+                                vim.cmd('normal! zz')
+                            end, 10)
+                        end)
+                        return true
+                    end,
                 })
             end,
             desc = "[S]earch [/] in Open Files",
@@ -58,7 +91,12 @@ return {
                         ["<C-p>"] = require("telescope.actions").move_selection_previous,
                         ["<C-j>"] = require("telescope.actions").move_selection_next,
                         ["<C-k>"] = require("telescope.actions").move_selection_previous,
-                        ["<CR>"] = require("telescope.actions").select_default,
+                        ["<CR>"] = function(prompt_bufnr)
+                            require("telescope.actions").select_default(prompt_bufnr)
+                            vim.defer_fn(function()
+                                vim.cmd('normal! zz')
+                            end, 10)
+                        end,
                         ["<C-x>"] = require("telescope.actions").select_horizontal,
                         ["<C-v>"] = require("telescope.actions").select_vertical,
                         ["<C-t>"] = require("telescope.actions").select_tab,
@@ -69,6 +107,12 @@ return {
                     n = {
                         ["<esc>"] = require("telescope.actions").close,
                         ["q"] = require("telescope.actions").close,
+                        ["<CR>"] = function(prompt_bufnr)
+                            require("telescope.actions").select_default(prompt_bufnr)
+                            vim.defer_fn(function()
+                                vim.cmd('normal! zz')
+                            end, 10)
+                        end,
                     },
                 },
                 prompt_prefix = " ",
@@ -107,7 +151,6 @@ return {
                 },
             },
         })
-
         -- Enable telescope extensions
         pcall(require("telescope").load_extension, "fzf")
         pcall(require("telescope").load_extension, "ui-select")
