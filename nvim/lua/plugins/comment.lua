@@ -5,25 +5,41 @@ return {
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function()
-        require("Comment").setup({
-            -- Add comment string support for JSX/TSX
-            pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+        local comment = require("Comment")
+        local api = require("Comment.api")
+        local ts_integration = require("ts_context_commentstring.integrations.comment_nvim")
+
+        comment.setup({
+            pre_hook = ts_integration.create_pre_hook(),
         })
 
         local opts = { noremap = true, silent = true }
 
-        -- Single line comment/uncomment
-        vim.keymap.set("n", "<leader>c", require("Comment.api").toggle.linewise.current, opts)
+        -- Linewise comment toggles
+        vim.keymap.set("n", "<leader>c", api.toggle.linewise.current, opts)
+        vim.keymap.set("n", "gcc", api.toggle.linewise.current, opts)
 
-        -- Multi-line comment/uncomment in visual mode
         vim.keymap.set("v", "<leader>c", function()
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<ESC>', true, false, true), 'nx', false)
-            require("Comment.api").toggle.linewise(vim.fn.visualmode())
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "nx", false)
+            api.toggle.linewise(vim.fn.visualmode())
+        end, opts)
+        vim.keymap.set("v", "gc", function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "nx", false)
+            api.toggle.linewise(vim.fn.visualmode())
         end, opts)
 
-        -- Classic gc motion for object-aware commenting
-        vim.keymap.set("n", "gcc", require("Comment.api").toggle.linewise.current, opts)
-        vim.keymap.set("v", "gc", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
+        -- Blockwise comment toggles
+        vim.keymap.set("n", "<leader>b", api.toggle.blockwise.current, opts)
+        vim.keymap.set("n", "gbc", api.toggle.blockwise.current, opts)
+
+        vim.keymap.set("v", "<leader>b", function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "nx", false)
+            api.toggle.blockwise(vim.fn.visualmode())
+        end, opts)
+        vim.keymap.set("v", "gb", function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "nx", false)
+            api.toggle.blockwise(vim.fn.visualmode())
+        end, opts)
     end,
 }
 

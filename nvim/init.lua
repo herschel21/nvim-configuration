@@ -27,7 +27,6 @@ local plugins = {
     { import = "plugins.indent-blankline" },
     { import = "plugins.alpha" },
     { import = "plugins.autosession" },
-    { import = "plugins.neorg"},
 
     -- Editor Features
     { import = "plugins.neotree" }, -- File explorer
