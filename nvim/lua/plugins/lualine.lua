@@ -3,14 +3,16 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"moll/vim-bbye",
+        "catppuccin/nvim",
+        "moll/vim-bbye",
 	},
 	config = function()
 		-- Use Catppuccin's built-in lualine theme
+        local ok, theme = pcall(require, "lualine.themes.catppuccin")
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin", -- Use theme directly, no custom colors
+				theme = ok and theme or "auto", -- Use theme directly, no custom colors
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha", "neo-tree" },
@@ -69,6 +71,12 @@ return {
 			},
 			extensions = { "fugitive", "neo-tree" },
 		})
+
+		-- Buffer navigation keymaps
+		local opts = { noremap = true, silent = true }
+		vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", opts)
+		vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", opts)
+		vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<cr>", opts)
 
 		-- Go to buffer by number
 		for i = 1, 9 do

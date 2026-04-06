@@ -1,10 +1,10 @@
--- Misc autocmds and editor behaviour tweaks
+-- Custom code snippets for different purposes
 
--- Prevent LSP from overwriting treesitter colour settings
+-- Prevent LSP from overwriting treesitter color settings
 -- https://github.com/NvChad/NvChad/issues/1907
 vim.hl.priorities.semantic_tokens = 95
 
--- Diagnostic appearance
+-- Appearance of diagnostics
 vim.diagnostic.config({
 	virtual_text = {
 		prefix = "●",
@@ -23,27 +23,21 @@ vim.diagnostic.config({
 	end,
 })
 
--- Highlight yanked text briefly
-local yank_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
 	callback = function()
 		vim.hl.on_yank()
 	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
--- Adjust kitty terminal padding when entering/leaving nvim
-local kitty_group = vim.api.nvim_create_augroup("KittyPadding", { clear = true })
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = kitty_group,
-	callback = function()
-		vim.fn.system("kitty @ set-spacing padding=0 margin=0 3 0 3")
-	end,
-})
-vim.api.nvim_create_autocmd("VimLeave", {
-	group = kitty_group,
-	callback = function()
-		vim.fn.system("kitty @ set-spacing padding=default margin=default")
-	end,
-})
+-- Set kitty terminal padding to 0 when in nvim
+vim.cmd([[
+augroup kitty_mp
+autocmd!
+au VimLeave * :silent !kitty @ set-spacing padding=default margin=default
+au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0 3 0 3
+augroup END
+]])
