@@ -70,12 +70,6 @@ return {
 			extensions = { "fugitive", "neo-tree" },
 		})
 
-		-- Buffer navigation keymaps
-		local opts = { noremap = true, silent = true }
-		vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", opts)
-		vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", opts)
-		vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<cr>", opts)
-
 		-- Go to buffer by number
 		for i = 1, 9 do
 			vim.keymap.set("n", "<leader>" .. i, function()

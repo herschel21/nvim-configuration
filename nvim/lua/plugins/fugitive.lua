@@ -25,7 +25,7 @@ return {
         { "<leader>gca", "<cmd>Git commit --amend<cr>", desc = "Git commit amend" },
         { "<leader>gp", "<cmd>Git push --force <cr>", desc = "Git push" },
         { "<leader>gl", "<cmd>Git pull<cr>", desc = "Git pull" },
-        { "<leader>gdd", "<cmd>Git push -f --push-option=target=qnx-dut <cr>", desc = "Git push to dut-1" },
+        { "<leader>gdd", "<cmd>Git push -f --push-option=target=qnx-dut53 <cr>", desc = "Git push to dut-1" },
         { "<leader>grf", "<cmd>Git reflog<cr>", desc = "Git reflog" },
         
         -- Git diff and blame

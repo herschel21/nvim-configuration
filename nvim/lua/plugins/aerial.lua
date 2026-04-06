@@ -10,7 +10,8 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        require("aerial").setup({
+        local aerial = require("aerial")
+        aerial.setup({
             on_attach = function(bufnr)
                 vim.keymap.set("n", "{", "<cmd>AerialPrev<cr>", { buffer = bufnr, desc = "Previous symbol" })
                 vim.keymap.set("n", "}", "<cmd>AerialNext<cr>", { buffer = bufnr, desc = "Next symbol" })
