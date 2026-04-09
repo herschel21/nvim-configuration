@@ -21,12 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugin Groups ]]
 local plugins = {
 	-- UI and Theming
-	{ import = "plugins.catpuccin" }, -- Theme
+	{ import = "plugins.catppuccin" }, -- Theme
 	{ import = "plugins.lualine" }, -- Status line
 	{ import = "plugins.indent-blankline" },
 	{ import = "plugins.alpha" },
 	{ import = "plugins.autosession" },
-	{ import = "plugins.neorg" },
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.vayAI" },
 	{ import = "plugins.latex-nvim" },
@@ -50,6 +49,7 @@ local plugins = {
 
 	-- Utilities
 	{ import = "plugins.lazy_dev" },
+	{ import = "plugins.bufdelete" },
 }
 
 -- [[ Lazy.nvim Configuration ]]
@@ -104,18 +104,6 @@ end)
 if not ok then
 	vim.notify("Error loading lazy.nvim: " .. tostring(err), vim.log.levels.ERROR)
 end
-
--- [[ Mason Setup ]]
-require("mason").setup({
-	ui = {
-		border = "rounded",
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
 
 -- [[ Session Management - Commented Out Template ]]
 -- -- Set session directory (can be customized)

@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
         "catppuccin/nvim",
-        "moll/vim-bbye",
+        "famiu/bufdelete.nvim",
 	},
 	config = function()
 		-- Use Catppuccin's built-in lualine theme
@@ -72,13 +72,7 @@ return {
 			extensions = { "fugitive", "neo-tree" },
 		})
 
-		-- Buffer navigation keymaps
-		local opts = { noremap = true, silent = true }
-		vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", opts)
-		vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", opts)
-		vim.keymap.set("n", "<leader>x", "<cmd>Bdelete!<cr>", opts)
-
-		-- Go to buffer by number
+		-- Go to buffer by number (Keeping this as it's specifically for 1-9 navigation)
 		for i = 1, 9 do
 			vim.keymap.set("n", "<leader>" .. i, function()
 				local buffers = vim.fn.getbufinfo({ buflisted = 1 })

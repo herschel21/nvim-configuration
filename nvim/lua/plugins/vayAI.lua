@@ -8,6 +8,9 @@
 return {
     "harshel721/VayAI.nvim",
     config = function()
-        require('vayai').setup()
+        -- Only attempt setup if API key is present to avoid startup warnings
+        if vim.env.LLM_API_KEY then
+            require('vayai').setup()
+        end
     end
 }

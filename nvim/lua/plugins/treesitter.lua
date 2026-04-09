@@ -6,66 +6,61 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- Install parsers for your embedded systems work
-			ensure_installed = {
-				"c",
-				"cpp",
-				"lua",
-				"vim",
-				"vimdoc",
-				"python",
-				"bash",
-				"markdown",
-				"markdown_inline",
-				"json",
-				"yaml",
-			},
-			auto_install = true,
-			ignore_install = { "latex" },
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = { "latex" }, -- Use vim highlighting for latex temporarily
-			},
-			indent = {
-				enable = true,
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<CR>",
-					node_incremental = "<CR>",
-					scope_incremental = "<Tab>",
-					node_decremental = "<S-Tab>",
+		-- In nvim-treesitter v1.0.0+, the 'configs' module is removed.
+		-- Basics like highlighting and indentation are now handled automatically 
+        -- or via the new simplified API.
+        
+        -- If you are using a newer version of nvim-treesitter, you can configure 
+        -- it via the new 'nvim-treesitter.parsers' or similar modules if needed, 
+        -- but most users can just rely on defaults.
+        
+        -- To maintain backward compatibility with plugins that still expect setup(),
+        -- we check if the old module exists.
+		local ok, configs = pcall(require, "nvim-treesitter.configs")
+		if ok then
+			configs.setup({
+				ensure_installed = {
+					"c",
+					"cpp",
+					"lua",
+					"vim",
+					"vimdoc",
+					"python",
+					"bash",
+					"markdown",
+					"markdown_inline",
+					"json",
+					"yaml",
 				},
-			},
-			-- Add textobjects config since you have the dependency
-			textobjects = {
-				select = {
+				auto_install = true,
+				highlight = {
 					enable = true,
-					lookahead = true,
+				},
+				indent = {
+					enable = true,
+				},
+				incremental_selection = {
+					enable = true,
 					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-						["aa"] = "@parameter.outer",
-						["ia"] = "@parameter.inner",
+						init_selection = "<CR>",
+						node_incremental = "<CR>",
+						scope_incremental = "<Tab>",
+						node_decremental = "<S-Tab>",
 					},
 				},
-				move = {
-					enable = true,
-					set_jumps = true,
-					goto_next_start = {
-						["]f"] = "@function.outer",
-						["]c"] = "@class.outer",
-					},
-					goto_previous_start = {
-						["[f"] = "@function.outer",
-						["[c"] = "@class.outer",
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
 					},
 				},
-			},
-		})
+			})
+		end
 	end,
 }
