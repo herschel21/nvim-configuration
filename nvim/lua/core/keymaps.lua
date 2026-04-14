@@ -96,14 +96,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- Toggle diagnostics
 local diagnostics_active = true
 vim.keymap.set("n", "<leader>do", function()
-    diagnostics_active = not diagnostics_active
-    if diagnostics_active then
-        vim.diagnostic.enable(true)
-    else
-        -- vim.diagnostic.disable() is deprecated in newer versions, 
-        -- using enable(false) instead.
-        vim.diagnostic.enable(false)
-    end
+    local is_enabled = vim.diagnostic.is_enabled()
+    vim.diagnostic.enable(not is_enabled)
 end, { desc = "Toggle Diagnostics" })
 
 -- Save and load session

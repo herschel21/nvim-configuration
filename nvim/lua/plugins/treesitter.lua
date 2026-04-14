@@ -16,8 +16,19 @@ return {
         
         -- To maintain backward compatibility with plugins that still expect setup(),
         -- we check if the old module exists.
-		local ok, configs = pcall(require, "nvim-treesitter.configs")
-		if ok then
+		-- Configuration for nvim-treesitter v1.0.0+ and older versions
+		local configs = nil
+		local ok_old, configs_old = pcall(require, "nvim-treesitter.configs")
+		if ok_old then
+			configs = configs_old
+		else
+			local ok_new, configs_new = pcall(require, "nvim-treesitter")
+			if ok_new then
+				configs = configs_new
+			end
+		end
+
+		if configs then
 			configs.setup({
 				ensure_installed = {
 					"c",

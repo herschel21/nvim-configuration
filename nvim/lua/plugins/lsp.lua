@@ -71,7 +71,8 @@ return {
 				-- Inlay hints toggle
 				if client and client.server_capabilities.inlayHintProvider then
 					map("th", function()
-						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+						local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
+						vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = event.buf })
 					end, "[T]oggle Inlay [H]ints")
 				end
 			end,
