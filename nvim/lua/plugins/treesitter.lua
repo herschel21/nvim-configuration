@@ -42,6 +42,8 @@ return {
 					"markdown_inline",
 					"json",
 					"yaml",
+					"gitcommit",
+					"git_rebase",
 				},
 				auto_install = true,
 				highlight = {

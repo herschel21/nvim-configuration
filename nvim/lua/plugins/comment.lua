@@ -9,9 +9,6 @@ return {
   config = function()
     local comment = require("Comment")
 
-    -- Load TS integration safely
-    local ok, ts_integration = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
-
     comment.setup({
       -- 🔥 Force correct comment style for C/C++
       pre_hook = function(ctx)
@@ -19,13 +16,21 @@ return {
 
         -- 🚨 HARD FORCE for C/C++
         if ft == "c" or ft == "cpp" or ft == "h" or ft == "hpp" then
+          -- In nvim 0.12.0, ensures commentstring is exactly what we want
           return "// %s"
         end
 
         -- fallback to Treesitter for other languages
-        if ok then
-          return ts_integration.create_pre_hook()(ctx)
+        local internal_ok, internal_ts_integration = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
+        if internal_ok then
+          local ret = internal_ts_integration.create_pre_hook()(ctx)
+          if ret then
+            return ret
+          end
         end
+
+        -- Final fallback to native commentstring (fixing the 'nil' error)
+        return vim.bo.commentstring
       end,
 
       -- Keymaps (standard)

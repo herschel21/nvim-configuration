@@ -1,0 +1,6 @@
+
+==============================================================================
+ts_context_commentstring:                                                 1 ❌
+
+- ❌ ERROR No healthcheck found for "ts_context_commentstring" plugin.
+
