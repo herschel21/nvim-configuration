@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-        "catppuccin/nvim",
+        -- "catppuccin/nvim",
         "famiu/bufdelete.nvim",
 	},
 	config = function()
@@ -69,7 +69,7 @@ return {
 				},
 				lualine_z = { "tabs" },
 			},
-			extensions = { "fugitive", "neo-tree" },
+			extensions = { "fugitive" },
 		})
 
 		-- Go to buffer by number (Keeping this as it's specifically for 1-9 navigation)

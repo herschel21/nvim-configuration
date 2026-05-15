@@ -7,6 +7,7 @@
 
 return {
     "harshel721/VayAI.nvim",
+    event = "VeryLazy",
     config = function()
         -- Only attempt setup if API key is present to avoid startup warnings
         if vim.env.LLM_API_KEY then

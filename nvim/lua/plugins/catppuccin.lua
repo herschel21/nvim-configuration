@@ -5,7 +5,7 @@ return {
   priority = 1000,
   config = function()
     -- Track transparency state
-    local bg_transparent = false
+    local bg_transparent = true
 
     -- Define the toggle function
     local toggle_transparency = function()

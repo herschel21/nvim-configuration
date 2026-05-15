@@ -1,6 +1,7 @@
 return {
 	"rmagatti/auto-session",
-	lazy = false,
+	lazy = true,
+	event = "VimEnter",
 	keys = {
 		{ "<leader>wr", "<cmd>SessionSearch<cr>", desc = "Session search" },
 		{ "<leader>ws", "<cmd>SessionSave<cr>", desc = "Save session" },
@@ -16,7 +17,7 @@ return {
 
 		-- Simple session naming
 		session_lens = {
-			load_on_setup = true,
+			load_on_setup = false,
 		},
 
 		-- Directory handling

@@ -22,6 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	-- UI and Theming
 	{ import = "plugins.catppuccin" }, -- Theme
+
 	{ import = "plugins.lualine" }, -- Status line
 	{ import = "plugins.indent-blankline" },
 	{ import = "plugins.alpha" },
@@ -45,7 +46,7 @@ local plugins = {
 	{ import = "plugins.lsp" }, -- Language Server Protocol
 	{ import = "plugins.mason" }, -- Language Server Protocol
 	{ import = "plugins.autocompletion" },
-	-- { import = "plugins.codium" }, -- AI completion
+	{ import = "plugins.codium" }, -- AI completion
 
 	-- Utilities
 	{ import = "plugins.lazy_dev" },
@@ -56,7 +57,7 @@ local plugins = {
 local ok, err = pcall(function()
 	require("lazy").setup(plugins, {
 		install = {
-			colorscheme = { "catppuccin" },
+			colorscheme = { "nordic" },
 		},
 		ui = {
 			icons = vim.g.have_nerd_font and {} or {
