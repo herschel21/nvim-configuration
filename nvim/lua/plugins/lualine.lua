@@ -1,11 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-        -- "catppuccin/nvim",
-        "famiu/bufdelete.nvim",
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		-- Use Catppuccin's built-in lualine theme
         local ok, theme = pcall(require, "lualine.themes.catppuccin")

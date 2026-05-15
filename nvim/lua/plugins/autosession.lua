@@ -1,6 +1,5 @@
 return {
 	"rmagatti/auto-session",
-	lazy = true,
 	event = "VimEnter",
 	keys = {
 		{ "<leader>wr", "<cmd>SessionSearch<cr>", desc = "Session search" },

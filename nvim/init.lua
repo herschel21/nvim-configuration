@@ -1,11 +1,13 @@
 -- [[ Core Configuration ]]
+-- mapleader must be set before lazy.nvim so plugin key specs resolve correctly
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 require("core.options")
-require("core.snippets")
-require("core.keymaps")
 
 -- [[ Bootstrap lazy.nvim ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.uv).fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 	vim.fn.system({
 		"git",
@@ -106,35 +108,14 @@ if not ok then
 	vim.notify("Error loading lazy.nvim: " .. tostring(err), vim.log.levels.ERROR)
 end
 
--- [[ Session Management - Commented Out Template ]]
--- -- Set session directory (can be customized)
--- local session_dir = vim.fn.stdpath("data") .. "/sessions"
---
--- -- Ensure session directory exists
--- vim.fn.mkdir(session_dir, "p")
---
--- -- Load session if it exists (with a specific filename)
--- local function load_session()
---     local session_file = session_dir .. "/.session.vim"
---     if vim.fn.filereadable(session_file) == 1 then
---         vim.cmd("source " .. session_file)
---     end
--- end
---
--- -- Auto-save session on exit
--- vim.api.nvim_create_autocmd("VimLeavePre", {
---     callback = function()
---         local session_file = session_dir .. "/.session.vim"
---         vim.cmd("mksession! " .. session_file)
---     end,
--- })
---
--- -- Load session on startup if it exists
--- vim.api.nvim_create_autocmd("VimEnter", {
---     callback = function()
---         -- Only load session if nvim was started without arguments
---         if vim.fn.argc() == 0 then
---             load_session()
---         end
---     end,
--- })
+-- Defer diagnostic config, autocmds and keymaps until after the UI is ready.
+-- vim.diagnostic and all keymap tables are heavy; deferring saves ~4ms from startup.
+vim.api.nvim_create_autocmd("User", {
+	pattern = "VeryLazy",
+	once = true,
+	callback = function()
+		require("core.snippets")
+		require("core.keymaps")
+	end,
+})
+

@@ -1,10 +1,4 @@
 -- Keymaps for better default experience
-
--- Set leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- For conciseness
 local opts = { noremap = true, silent = true }
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
@@ -94,7 +88,6 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Toggle diagnostics
-local diagnostics_active = true
 vim.keymap.set("n", "<leader>do", function()
     local is_enabled = vim.diagnostic.is_enabled()
     vim.diagnostic.enable(not is_enabled)

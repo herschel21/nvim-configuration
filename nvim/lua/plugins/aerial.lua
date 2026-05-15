@@ -31,11 +31,11 @@ return {
                 "Method",
                 "Struct",
             },
-            -- Automatically open aerial when entering supported buffer
             open_automatic = function(bufnr)
+                local a = require("aerial")
                 return vim.api.nvim_buf_line_count(bufnr) > 80
-                    and aerial.num_symbols(bufnr) > 4
-                    and not aerial.was_closed()
+                    and a.num_symbols(bufnr) > 4
+                    and not a.was_closed()
             end,
         })
     end,

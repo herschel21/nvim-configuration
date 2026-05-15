@@ -14,13 +14,10 @@ vim.diagnostic.config({
 		end,
 	},
 	underline = false,
-	update_in_insert = true,
+	update_in_insert = false,
 	float = {
 		source = "always",
 	},
-	on_ready = function()
-		vim.cmd("highlight DiagnosticVirtualText guibg=NONE")
-	end,
 })
 
 -- Highlight on yank
@@ -34,10 +31,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Set kitty terminal padding to 0 when in nvim
-vim.cmd([[
-augroup kitty_mp
-autocmd!
-au VimLeave * :silent !kitty @ set-spacing padding=default margin=default
-au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0 3 0 3
-augroup END
-]])
+local kitty_group = vim.api.nvim_create_augroup("kitty_mp", { clear = true })
+vim.api.nvim_create_autocmd("VimLeave", {
+	group = kitty_group,
+	callback = function()
+		vim.fn.system("kitty @ set-spacing padding=default margin=default")
+	end,
+})
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = kitty_group,
+	callback = function()
+		vim.fn.jobstart("kitty @ set-spacing padding=0 margin=0 3 0 3")
+	end,
+})

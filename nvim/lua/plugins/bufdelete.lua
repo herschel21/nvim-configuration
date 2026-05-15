@@ -1,4 +1,4 @@
 return {
 	"famiu/bufdelete.nvim",
-	event = "VeryLazy",
+	cmd = { "Bdelete", "Bwipeout" },
 }
