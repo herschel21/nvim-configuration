@@ -32,6 +32,7 @@ local plugins = {
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.vayAI" },
 	{ import = "plugins.latex-nvim" },
+	{ import = "plugins.markdown-preview" },
 
 	-- Editor Features
 	{ import = "plugins.neotree" }, -- File explorer
