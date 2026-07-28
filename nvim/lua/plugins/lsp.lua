@@ -47,12 +47,12 @@ return {
 				map("gd", function() require("telescope.builtin").lsp_definitions() end, "[G]oto [D]efinition")
 				map("gr", function() require("telescope.builtin").lsp_references() end, "[G]oto [R]eferences")
 				map("gI", function() require("telescope.builtin").lsp_implementations() end, "[G]oto [I]mplementation")
-				map("D", function() require("telescope.builtin").lsp_type_definitions() end, "Type [D]efinition")
-				map("ds", function() require("telescope.builtin").lsp_document_symbols() end, "[D]ocument [S]ymbols")
+				map("<leader>D", function() require("telescope.builtin").lsp_type_definitions() end, "Type [D]efinition")
+				map("<leader>ds", function() require("telescope.builtin").lsp_document_symbols() end, "[D]ocument [S]ymbols")
 
 				-- Actions
-				map("rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				map("ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				-- Highlight symbol under cursor

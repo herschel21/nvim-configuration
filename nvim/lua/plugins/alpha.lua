@@ -69,11 +69,11 @@ return {
         vim.api.nvim_create_autocmd("User", {
             pattern = "AlphaReady",
             callback = function()
-                local old_laststatus = vim.opt.laststatus
+                local old_laststatus = vim.o.laststatus
                 vim.api.nvim_create_autocmd("BufUnload", {
                     buffer = 0,
                     callback = function()
-                        vim.opt.laststatus = old_laststatus
+                        vim.o.laststatus = old_laststatus
                     end,
                 })
                 vim.opt.laststatus = 0

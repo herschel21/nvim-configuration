@@ -27,6 +27,10 @@ return {
         { "\\", "<cmd>Neotree reveal<cr>", desc = "Reveal current file in Neo-tree" },
     },
     init = function()
+        -- Disable netrw before it can initialize
+        vim.g.loaded_netrw = 1
+        vim.g.loaded_netrwPlugin = 1
+
         -- FIX: Prevent empty buffer when opening files - use autocmd for lazy-loading
         vim.api.nvim_create_autocmd("BufEnter", {
             group = vim.api.nvim_create_augroup("Neotree_start_directory", { clear = true }),
@@ -45,9 +49,6 @@ return {
         })
     end,
     config = function()
-        -- Disable netrw to prevent conflicts
-        vim.g.loaded_netrw = 1
-        vim.g.loaded_netrwPlugin = 1
 
         require("neo-tree").setup({
             close_if_last_window = false,

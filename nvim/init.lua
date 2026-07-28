@@ -60,7 +60,7 @@ local plugins = {
 local ok, err = pcall(function()
 	require("lazy").setup(plugins, {
 		install = {
-			colorscheme = { "nordic" },
+			colorscheme = { "catppuccin" },
 		},
 		ui = {
 			icons = vim.g.have_nerd_font and {} or {

@@ -31,7 +31,7 @@ return {
 				integrations = {
 					cmp = true,
 					gitsigns = true,
-					nvimtree = true,
+					neotree = true,
 					treesitter = true,
 					lualine = true,
 					notify = false,

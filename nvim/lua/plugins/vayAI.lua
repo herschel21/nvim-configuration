@@ -7,8 +7,7 @@
 
 return {
     "harshel721/VayAI.nvim",
-    -- event = "VeryLazy",
-    event = false,
+    lazy = true,
     cond = function()
         return vim.env.LLM_API_KEY ~= nil
     end,
