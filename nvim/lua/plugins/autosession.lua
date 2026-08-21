@@ -1,6 +1,6 @@
 return {
 	"rmagatti/auto-session",
-	event = "VimEnter",
+	lazy = false, -- Must be eager: VimEnter fires before lazy plugins load, so auto_restore would never run
 	keys = {
 		{ "<leader>wr", "<cmd>SessionSearch<cr>", desc = "Session search" },
 		{ "<leader>ws", "<cmd>SessionSave<cr>", desc = "Save session" },

@@ -25,7 +25,7 @@ return {
 			delay = 1000,
 		},
 		on_attach = function(bufnr)
-			local gs = package.loaded.gitsigns
+			local gs = require("gitsigns")
 			local opts = { buffer = bufnr, noremap = true, silent = true }
 
 			-- Navigation

@@ -3,15 +3,19 @@ return {
 	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		-- Use Catppuccin's built-in lualine theme
-        local ok, theme = pcall(require, "lualine.themes.catppuccin")
+		-- "catppuccin-mocha" is shipped by catppuccin itself under its plugin rtp;
+		-- lualine resolves it automatically. Do NOT use pcall+require — the theme
+		-- is a string name, not a Lua module path.
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = ok and theme or "auto", -- Use theme directly, no custom colors
+				theme = "catppuccin-mocha",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "neo-tree" },
+				disabled_filetypes = {
+					statusline = { "alpha", "neo-tree" },
+					tabline = { "alpha" }, -- hide bufferline on dashboard
+				},
 				always_divide_middle = true,
 			},
 			sections = {
@@ -48,14 +52,22 @@ return {
 				lualine_z = {},
 			},
 			tabline = {
-				lualine_a = {
+				lualine_a = {}, -- keep empty: lualine_a's bold accent color is for mode, not buffers
+				lualine_c = {
 					{
 						"buffers",
 						show_filename_only = true,
 						hide_filename_extension = false,
 						show_modified_status = true,
-						mode = 0,
-						max_length = vim.o.columns * 2 / 3,
+						mode = 2, -- show buffer number + name (makes <leader>1-9 jumps predictable)
+						max_length = function() return vim.o.columns * 2 / 3 end, -- dynamic: updates on resize
+						filetype_names = {
+							TelescopePrompt = "Telescope",
+							["neo-tree"] = "Neo-Tree",
+							alpha = "Dashboard",
+							lazy = "Lazy",
+							mason = "Mason",
+						},
 						symbols = {
 							modified = " ●",
 							alternate_file = "#",
@@ -63,7 +75,8 @@ return {
 						},
 					},
 				},
-				lualine_z = { "tabs" },
+				-- lualine_z intentionally empty: vim tabs are managed via keymaps (<leader>to/tn/tp/tx)
+				-- not shown in the bar to keep the tabline clean
 			},
 			extensions = { "fugitive" },
 		})

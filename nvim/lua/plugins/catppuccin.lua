@@ -36,9 +36,36 @@ return {
 					lualine = true,
 					notify = false,
 					mini = { enabled = true, indentscope_color = "" },
+					-- Additional integrations for installed plugins
+					telescope = { enabled = true, style = "nvchad" },
+					arial = true,
+					indent_blankline = { enabled = true, scope_color = "lavender", colored_indent_levels = false },
+					native_lsp = {
+						enabled = true,
+						virtual_text = {
+							errors = { "italic" },
+							hints = { "italic" },
+							warnings = { "italic" },
+							information = { "italic" },
+						},
+						underlines = {
+							errors = { "underline" },
+							hints = { "underline" },
+							warnings = { "underline" },
+							information = { "underline" },
+						},
+						inlay_hints = { background = true },
+					},
+					masonfloat = false,
+					alpha = true,
 				},
 			})
 			vim.cmd.colorscheme("catppuccin")
+			-- Refresh lualine so its highlights update (catppuccin-mocha theme reads
+			-- transparent_background from catppuccin.options, so a simple refresh suffices)
+			if package.loaded["lualine"] then
+				require("lualine").refresh()
+			end
 		end
 
 		apply(bg_transparent)
@@ -46,6 +73,6 @@ return {
 		vim.keymap.set("n", "<leader>z", function()
 			bg_transparent = not bg_transparent
 			apply(bg_transparent)
-		end, { noremap = true, silent = true })
+		end, { desc = "Toggle transparent background", noremap = true, silent = true })
 	end,
 }

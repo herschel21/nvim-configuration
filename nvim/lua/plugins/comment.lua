@@ -49,19 +49,5 @@ return {
 			end,
 		})
 
-		local api = require("Comment.api")
-		local opts = { noremap = true, silent = true }
-
-		vim.keymap.set("n", "gcc", api.toggle.linewise.current, opts)
-		vim.keymap.set("v", "gc", function()
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
-			api.toggle.linewise(vim.fn.visualmode())
-		end, opts)
-
-		vim.keymap.set("n", "gbc", api.toggle.blockwise.current, opts)
-		vim.keymap.set("v", "gb", function()
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
-			api.toggle.blockwise(vim.fn.visualmode())
-		end, opts)
 	end,
 }
