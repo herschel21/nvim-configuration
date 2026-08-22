@@ -7,7 +7,7 @@
 
 return {
     "harshel721/VayAI.nvim",
-    lazy = true,
+    cmd = { "LLMAsk", "LLMExplain", "LLMQuery", "LLMModel", "LLMModels", "LLMCancel", "LLMTest" },
     cond = function()
         return vim.env.LLM_API_KEY ~= nil
     end,

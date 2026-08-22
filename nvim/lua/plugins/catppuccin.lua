@@ -28,35 +28,38 @@ return {
 					types = {},
 					operators = {},
 				},
+				-- LSP diagnostic/inlay-hint styling: a top-level option (not under
+				-- `integrations`) since catppuccin dropped `integrations.native_lsp`.
+				lsp_styles = {
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+					},
+					inlay_hints = { background = true },
+				},
 				integrations = {
 					cmp = true,
 					gitsigns = true,
 					neotree = true,
-					treesitter = true,
-					lualine = true,
+					-- `lualine` takes an overrides table, not a boolean; `true` here made
+					-- lualine's theme require() error and silently fall back to a
+					-- non-catppuccin auto theme for the statusline/tabline (buffer line).
+					lualine = {},
 					notify = false,
 					mini = { enabled = true, indentscope_color = "" },
 					-- Additional integrations for installed plugins
 					telescope = { enabled = true, style = "nvchad" },
-					arial = true,
+					aerial = true,
 					indent_blankline = { enabled = true, scope_color = "lavender", colored_indent_levels = false },
-					native_lsp = {
-						enabled = true,
-						virtual_text = {
-							errors = { "italic" },
-							hints = { "italic" },
-							warnings = { "italic" },
-							information = { "italic" },
-						},
-						underlines = {
-							errors = { "underline" },
-							hints = { "underline" },
-							warnings = { "underline" },
-							information = { "underline" },
-						},
-						inlay_hints = { background = true },
-					},
-					masonfloat = false,
+					mason = false,
 					alpha = true,
 				},
 			})

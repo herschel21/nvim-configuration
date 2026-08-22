@@ -24,7 +24,7 @@ M.go_to_implementation = function()
 		end
 
 		-- Use show_document with both focus=true and reuse_win=false
-		if vim.tbl_islist(result) then
+		if vim.islist(result) then
 			vim.lsp.util.show_document(result[1], offset_encoding, { focus = true, reuse_win = false })
 		else
 			vim.lsp.util.show_document(result, offset_encoding, { focus = true, reuse_win = false })

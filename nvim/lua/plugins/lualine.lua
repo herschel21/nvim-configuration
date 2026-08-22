@@ -61,6 +61,11 @@ return {
 						show_modified_status = true,
 						mode = 2, -- show buffer number + name (makes <leader>1-9 jumps predictable)
 						max_length = function() return vim.o.columns * 2 / 3 end, -- dynamic: updates on resize
+						buffers_color = {
+							-- catppuccin mocha "blue"; only fg is given so lualine still
+							-- fills in the theme's own (mode/transparency-aware) background.
+							active = { fg = "#89b4fa" },
+						},
 						filetype_names = {
 							TelescopePrompt = "Telescope",
 							["neo-tree"] = "Neo-Tree",

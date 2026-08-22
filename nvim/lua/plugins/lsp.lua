@@ -70,7 +70,7 @@ return {
 
 				-- Inlay hints toggle
 				if client and client.server_capabilities.inlayHintProvider then
-					map("th", function()
+					map("<leader>th", function()
 						local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
 						vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = event.buf })
 					end, "[T]oggle Inlay [H]ints")
@@ -95,16 +95,17 @@ return {
 			},
 		}
 
-		-- Setup servers
+		-- Apply per-server config via the native vim.lsp.config API.
+		-- mason-lspconfig v2 dropped `handlers`/`setup_handlers`; servers are now
+		-- enabled automatically (automatic_enable, on by default) once installed,
+		-- picking up whatever was passed to vim.lsp.config() here.
+		for name, server in pairs(servers) do
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			vim.lsp.config(name, server)
+		end
+
 		require("mason-lspconfig").setup({
 			ensure_installed = vim.tbl_keys(servers),
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
 		})
 	end,
 }
