@@ -41,7 +41,6 @@ local plugins = {
 	{ import = "plugins.autopairs" }, -- Auto brackets
 	{ import = "plugins.comment" }, -- Comments
 	{ import = "plugins.fugitive" },
-	-- { import = "plugins.conform" },
 	{ import = "plugins.gitsigns" },
 	-- { import = "plugins.vimtex" },
 
