@@ -3,13 +3,12 @@ return {
 	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		-- "catppuccin-mocha" is shipped by catppuccin itself under its plugin rtp;
-		-- lualine resolves it automatically. Do NOT use pcall+require — the theme
-		-- is a string name, not a Lua module path.
+		-- lualine resolves the "aurora" theme aurora ships under its own rtp;
+		-- Do NOT use pcall+require — the theme is a string name, not a module path.
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin-mocha",
+				theme = "aurora",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				disabled_filetypes = {
@@ -62,9 +61,9 @@ return {
 						mode = 2, -- show buffer number + name (makes <leader>1-9 jumps predictable)
 						max_length = function() return vim.o.columns * 2 / 3 end, -- dynamic: updates on resize
 						buffers_color = {
-							-- catppuccin mocha "blue"; only fg is given so lualine still
+							-- aurora accent "blue"; only fg is given so lualine still
 							-- fills in the theme's own (mode/transparency-aware) background.
-							active = { fg = "#89b4fa" },
+							active = { fg = "#7aa2f7" },
 						},
 						filetype_names = {
 							TelescopePrompt = "Telescope",
