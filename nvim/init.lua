@@ -23,9 +23,10 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugin Groups ]]
 local plugins = {
 	-- UI and Theming
-	{ import = "plugins.aurora" }, -- Theme
+	{ import = "plugins.catppuccin" }, -- Theme
 
 	{ import = "plugins.lualine" }, -- Status line
+	{ import = "plugins.bufferline" }, -- Buffer / tab line
 	{ import = "plugins.indent-blankline" },
 	{ import = "plugins.alpha" },
 	{ import = "plugins.autosession" },
@@ -59,7 +60,7 @@ local plugins = {
 local ok, err = pcall(function()
 	require("lazy").setup(plugins, {
 		install = {
-			colorscheme = { "aurora" },
+			colorscheme = { "catppuccin" },
 		},
 		ui = {
 			icons = vim.g.have_nerd_font and {} or {
