@@ -68,7 +68,9 @@ return {
 				map("<leader>ws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end, "[W]orkspace [S]ymbols")
 
 				-- Diagnostics
-				map("<leader>e", vim.diagnostic.open_float, "Show Diagnostic [E]rror")
+				-- <leader>de not <leader>e: the latter is the global nvim-tree toggle
+				-- (plugins.nvim-tree), and a buffer-local map here would shadow it.
+				map("<leader>de", vim.diagnostic.open_float, "Show [D]iagnostic [E]rror")
 				map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Previous Diagnostic")
 				map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Next Diagnostic")
 
