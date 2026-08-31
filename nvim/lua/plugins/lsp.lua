@@ -18,6 +18,22 @@ return {
 		},
 	},
 	config = function()
+		-- Diagnostics UI (Neovim's LSP defaults cover keymaps like grn/gra/grr/gri/grt/gO/K/i_CTRL-S,
+		-- so we only add what those don't: diagnostic navigation/float and workspace symbols below).
+		vim.diagnostic.config({
+			severity_sort = true,
+			float = { border = "rounded", source = true },
+			virtual_text = { prefix = "●" },
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.INFO] = "",
+					[vim.diagnostic.severity.HINT] = "",
+				},
+			},
+		})
+
 		-- Filter non-file buffers (fugitive://, git://, etc.)
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("skip-non-file-lsp", { clear = true }),
@@ -48,6 +64,12 @@ return {
 				map("gI", function() require("telescope.builtin").lsp_implementations() end, "[G]oto [I]mplementation")
 				map("<leader>D", function() require("telescope.builtin").lsp_type_definitions() end, "Type [D]efinition")
 				map("<leader>ds", function() require("telescope.builtin").lsp_document_symbols() end, "[D]ocument [S]ymbols")
+				map("<leader>ws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end, "[W]orkspace [S]ymbols")
+
+				-- Diagnostics
+				map("<leader>e", vim.diagnostic.open_float, "Show Diagnostic [E]rror")
+				map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Previous Diagnostic")
+				map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Next Diagnostic")
 
 				-- Actions
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
