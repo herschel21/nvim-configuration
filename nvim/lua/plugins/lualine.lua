@@ -50,8 +50,8 @@ function M.setup_theme(transparent)
 		options = {
 			icons_enabled = true,
 			theme = build_theme(transparent),
-			section_separators = { left = "", right = "" },
-			component_separators = { left = "", right = "" },
+			section_separators = { left = "", right = "" },
+			component_separators = { left = "", right = "" },
 			disabled_filetypes = { statusline = { "alpha", "NvimTree" } },
 			always_divide_middle = true,
 		},
@@ -96,6 +96,22 @@ function M.setup_theme(transparent)
 			lualine_x = { { "location", padding = 0 } },
 			lualine_y = {},
 			lualine_z = {},
+		},
+		winbar = {
+			lualine_c = {
+				{
+					function() return require("nvim-navic").get_location() end,
+					cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+				},
+			},
+		},
+		inactive_winbar = {
+			lualine_c = {
+				{
+					function() return require("nvim-navic").get_location() end,
+					cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+				},
+			},
 		},
 		extensions = { "fugitive", "nvim-tree", "lazy", "mason" },
 	})

@@ -5,6 +5,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
+		"SmiteshP/nvim-navic",
 		{
 			"j-hui/fidget.nvim",
 			opts = {
@@ -95,6 +96,11 @@ return {
 						local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
 						vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = event.buf })
 					end, "[T]oggle Inlay [H]ints")
+				end
+
+				-- Winbar breadcrumb (consumed by lualine's winbar section)
+				if client and client.server_capabilities.documentSymbolProvider then
+					require("nvim-navic").attach(client, event.buf)
 				end
 			end,
 		})

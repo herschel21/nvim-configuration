@@ -33,7 +33,7 @@ function M.setup_theme(transparent)
 					separator = true,
 				},
 			},
-			separator_style = "thin",
+			separator_style = "slant",
 			show_buffer_close_icons = true,
 			show_close_icon = false,
 			always_show_bufferline = true,

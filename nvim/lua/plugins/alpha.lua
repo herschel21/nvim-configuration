@@ -7,11 +7,7 @@ return {
         local dashboard = require("alpha.themes.dashboard")
 
         -- Embedded systems ASCII art
-		dashboard.section.header.val = {
-			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
+			dashboard.section.header.val = {
 			[[⠈⠙⠲⢶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣿⡀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⣼⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣿⠟⠓⠉]],
 			[[⠀⠀⠀⠀⠈⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⢀⣧⣶⣦⣇⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠉⠀⠀⠀⠀]],
 			[[⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣾⣿⣿⣿⣿⣶⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀]],
@@ -22,20 +18,18 @@ return {
 			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
 			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
 			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-			[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-		}
+			}
         -- Buttons with embedded development focus
         dashboard.section.buttons.val = {
-            dashboard.button("p", "📁 Project Files", ":Telescope git_files <CR>"),
-            dashboard.button("f", "🔍 Find Files", ":Telescope find_files <CR>"),
-            dashboard.button("c", "📝 Edit Config", ":e ~/.config/nvim/init.lua <CR>"),
-            dashboard.button("r", "📜 Recent Files", ":Telescope oldfiles <CR>"),
-            dashboard.button("g", "🌿 Git Status", ":Git <CR>"),
-            dashboard.button("t", "🔎 Find Text", ":Telescope live_grep <CR>"),
-            dashboard.button("m", "🔧 Mason (LSP)", ":Mason <CR>"),
-            dashboard.button("l", "⚡ Lazy (Plugins)", ":Lazy <CR>"),
-            dashboard.button("q", "🚪 Quit", ":qa <CR>"),
+            dashboard.button("p", "  Project Files", ":Telescope git_files <CR>"),
+            dashboard.button("f", "  Find Files", ":Telescope find_files <CR>"),
+            dashboard.button("c", "  Edit Config", ":e ~/.config/nvim/init.lua <CR>"),
+            dashboard.button("r", "  Recent Files", ":Telescope oldfiles <CR>"),
+            dashboard.button("g", "  Git Status", ":Git <CR>"),
+            dashboard.button("t", "  Find Text", ":Telescope live_grep <CR>"),
+            dashboard.button("m", "  Mason (LSP)", ":Mason <CR>"),
+            dashboard.button("l", "󰒲  Lazy (Plugins)", ":Lazy <CR>"),
+            dashboard.button("q", "  Quit", ":qa <CR>"),
         }
 
         -- System information footer
@@ -47,9 +41,9 @@ return {
 
             return {
                 "",
-                "⚡ " .. plugins_count .. " plugins loaded",
-                "🕐 " .. datetime,
-                "🚀 " .. nvim_version,
+                "󰒲 " .. plugins_count .. " plugins loaded",
+                " " .. datetime,
+                " " .. nvim_version,
                 "",
                 ""
             }

@@ -42,6 +42,7 @@ return {
 				},
 				integrations = {
 					indent_blankline = { scope_color = "lavender" },
+					navic = { enabled = true, custom_bg = "lualine" },
 				},
 			})
 			vim.cmd.colorscheme("catppuccin")
