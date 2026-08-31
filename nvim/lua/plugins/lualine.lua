@@ -52,7 +52,7 @@ function M.setup_theme(transparent)
 			theme = build_theme(transparent),
 			section_separators = { left = "", right = "" },
 			component_separators = { left = "", right = "" },
-			disabled_filetypes = { statusline = { "alpha", "neo-tree" } },
+			disabled_filetypes = { statusline = { "alpha", "NvimTree" } },
 			always_divide_middle = true,
 		},
 		sections = {
@@ -97,7 +97,7 @@ function M.setup_theme(transparent)
 			lualine_y = {},
 			lualine_z = {},
 		},
-		extensions = { "fugitive", "neo-tree", "lazy", "mason" },
+		extensions = { "fugitive", "nvim-tree", "lazy", "mason" },
 	})
 end
 

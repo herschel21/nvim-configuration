@@ -36,7 +36,7 @@ local plugins = {
 	{ import = "plugins.markdown-preview" },
 
 	-- Editor Features
-	{ import = "plugins.neotree" }, -- File explorer
+	{ import = "plugins.nvim-tree" }, -- File explorer
 	{ import = "plugins.telescope" }, -- Fuzzy finder
 	{ import = "plugins.aerial" }, -- Code outline
 	{ import = "plugins.autopairs" }, -- Auto brackets
@@ -49,7 +49,7 @@ local plugins = {
 	{ import = "plugins.lsp" }, -- Language Server Protocol
 	{ import = "plugins.mason" }, -- Language Server Protocol
 	{ import = "plugins.autocompletion" },
-	{ import = "plugins.codium" }, -- AI completion
+	-- { import = "plugins.codium" }, -- AI completion
 
 	-- Utilities
 	{ import = "plugins.lazy_dev" },

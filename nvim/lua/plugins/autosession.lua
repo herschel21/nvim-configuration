@@ -30,14 +30,13 @@ return {
 		bypass_session_save_file_types = {
 			"alpha",
 			"dashboard",
-			"neo-tree",
-			"neo-tree-popup",
+			"NvimTree",
 			"notify",
 		},
 
-		-- Simple hooks - just close neo-tree before saving
+		-- Simple hooks - just close nvim-tree before saving
 		pre_save_cmds = {
-			"Neotree close",
+			"NvimTreeClose",
 		},
 
 		post_restore_cmds = {

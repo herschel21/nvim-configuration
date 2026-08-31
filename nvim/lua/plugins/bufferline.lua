@@ -26,7 +26,7 @@ function M.setup_theme(transparent)
 			end,
 			offsets = {
 				{
-					filetype = "neo-tree",
+					filetype = "NvimTree",
 					text = "File Explorer",
 					highlight = "Directory",
 					text_align = "left",
