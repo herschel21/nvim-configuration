@@ -105,7 +105,13 @@ return {
 
 		-- Server configurations
 		local servers = {
-			clangd = { cmd = { "clangd", "--offset-encoding=utf-16" } },
+			clangd = {
+				cmd = {
+					"clangd",
+					"--offset-encoding=utf-16",
+					"--pch-storage=memory", -- keep preambles in RAM instead of disk -> much faster completion
+				},
+			},
 			lua_ls = {
 				settings = {
 					Lua = {
