@@ -11,10 +11,6 @@ return {
     },
     config = function()
         require("aerial").setup({
-            on_attach = function(bufnr)
-                vim.keymap.set("n", "{", "<cmd>AerialPrev<cr>", { buffer = bufnr, desc = "Previous symbol" })
-                vim.keymap.set("n", "}", "<cmd>AerialNext<cr>", { buffer = bufnr, desc = "Next symbol" })
-            end,
             layout = {
                 min_width = 30,
                 default_direction = "prefer_right",

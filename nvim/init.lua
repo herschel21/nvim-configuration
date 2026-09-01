@@ -43,6 +43,7 @@ local plugins = {
 	{ import = "plugins.comment" }, -- Comments
 	{ import = "plugins.fugitive" },
 	{ import = "plugins.gitsigns" },
+	{ import = "plugins.grug-far" }, -- Project-wide search and replace
 	-- { import = "plugins.vimtex" },
 
 	-- Development Tools
