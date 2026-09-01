@@ -31,7 +31,6 @@ local plugins = {
 	{ import = "plugins.alpha" },
 	{ import = "plugins.autosession" },
 	{ import = "plugins.treesitter" },
-	{ import = "plugins.vayAI" },
 	{ import = "plugins.latex-nvim" },
 	{ import = "plugins.markdown-preview" },
 
@@ -50,7 +49,6 @@ local plugins = {
 	{ import = "plugins.lsp" }, -- Language Server Protocol
 	{ import = "plugins.mason" }, -- Language Server Protocol
 	{ import = "plugins.autocompletion" },
-	-- { import = "plugins.codium" }, -- AI completion
 
 	-- Utilities
 	{ import = "plugins.lazy_dev" },
