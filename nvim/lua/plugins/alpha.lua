@@ -25,7 +25,7 @@ return {
             dashboard.button("f", "  Find Files", ":Telescope find_files <CR>"),
             dashboard.button("c", "  Edit Config", ":e ~/.config/nvim/init.lua <CR>"),
             dashboard.button("r", "  Recent Files", ":Telescope oldfiles <CR>"),
-            dashboard.button("g", "  Git Status", ":Git <CR>"),
+            dashboard.button("g", "  Git Status", ":Neogit <CR>"),
             dashboard.button("t", "  Find Text", ":Telescope live_grep <CR>"),
             dashboard.button("m", "  Mason (LSP)", ":Mason <CR>"),
             dashboard.button("l", "󰒲  Lazy (Plugins)", ":Lazy <CR>"),

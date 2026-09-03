@@ -113,7 +113,7 @@ function M.setup_theme(transparent)
 				},
 			},
 		},
-		extensions = { "fugitive", "nvim-tree", "lazy", "mason" },
+		extensions = { "nvim-tree", "lazy", "mason" },
 	})
 end
 
