@@ -44,7 +44,9 @@ vim.keymap.set("n", "<leader>-", "<C-x>", opts) -- decrement
 
 -- Window management
 vim.keymap.set("n", "<leader>sv", "<C-w>v", opts) -- split window vertically
-vim.keymap.set("n", "<leader>sh", "<C-w>s", opts) -- split window horizontally
+-- <leader>sx not <leader>sh: the latter is Telescope's help_tags
+-- (plugins.telescope), and this global map here would shadow it.
+vim.keymap.set("n", "<leader>sx", "<C-w>s", opts) -- split window horizontally
 vim.keymap.set("n", "<leader>se", "<C-w>=", opts) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>sz", ":close<CR>", opts) -- close current split window
 

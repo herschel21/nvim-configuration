@@ -65,7 +65,10 @@ return {
 				map("gI", function() require("telescope.builtin").lsp_implementations() end, "[G]oto [I]mplementation")
 				map("<leader>D", function() require("telescope.builtin").lsp_type_definitions() end, "Type [D]efinition")
 				map("<leader>ds", function() require("telescope.builtin").lsp_document_symbols() end, "[D]ocument [S]ymbols")
-				map("<leader>ws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end, "[W]orkspace [S]ymbols")
+				-- <leader>dw not <leader>ws: the latter is auto-session's SessionSave
+				-- (plugins.autosession), and a buffer-local map here would shadow it
+				-- in every buffer with an attached LSP.
+				map("<leader>dw", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end, "[W]orkspace [S]ymbols")
 
 				-- Diagnostics
 				-- <leader>de not <leader>e: the latter is the global nvim-tree toggle
