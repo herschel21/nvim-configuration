@@ -95,7 +95,3 @@ vim.keymap.set("n", "<leader>do", function()
     vim.diagnostic.enable(not is_enabled)
 end, { desc = "Toggle Diagnostics" })
 
--- Save and load session
-vim.keymap.set("n", "<leader>ss", ":mksession! .session.vim<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>sl", ":source .session.vim<CR>", { noremap = true, silent = false })
-
