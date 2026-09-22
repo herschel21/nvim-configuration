@@ -24,6 +24,12 @@ return {
 			view = {
 				width = 35,
 			},
+			-- nvim-tree master uses SessionWritePre/SessionLoadPost autocmds, which
+			-- this nvim (v0.13.0-dev-509) doesn't have yet. Disabled until nvim is new
+			-- enough to carry those events; tree restore via autosession still works.
+			experimental = {
+				session_restore_nvim = false,
+			},
 			renderer = {
 				group_empty = true,
 				icons = {
